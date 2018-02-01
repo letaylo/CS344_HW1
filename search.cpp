@@ -1,6 +1,15 @@
-void recursive_search( int[] array, int size, int& min, int& max, int& cost ) {
-	if (size == 2 || size == 1) {
-		min_max( array, size, min, max, cost );
+void recursive_search( int array[], int size, int& min, int& max, int& cost ) {
+	if (size == 1) {
+		min = array[0];
+		max = array[0];
+	}else if (size == 2) {
+		if (array[0] < array[1]) {
+			min = array[0];
+			max = array[1];
+		}else {
+			min = array[1];
+			max = array[0];
+		}
 	}else {
 		int size_left = size/2;
 		int size_right = size - (size/2);
@@ -11,7 +20,7 @@ void recursive_search( int[] array, int size, int& min, int& max, int& cost ) {
 		for (int i = 0; i < size_left; i++) {
 			left_array[i] = array[i];
 		}
-		for (int i = 0; i < size_right; i++ {
+		for (int i = 0; i < size_right; i++) {
 			right_array[i] = array[i + size_left];
 		}
 

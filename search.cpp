@@ -94,3 +94,4 @@ void iterative_search(int buffer[], int size, int& min, int& max, int& cost)
     cost += 3;
   }       
 }
+

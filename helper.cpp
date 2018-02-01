@@ -1,3 +1,12 @@
+#include <stdlib.h>
+#include <assert.h>
+#include <iostream>
+#include <fstream>
+
+void swap( int&, int&);
+void shuffle(int[], int);
+void show( int[], int);
+
 void shuffle(int arr[], int size)
 {
    srand(time(0));
@@ -15,3 +24,4 @@ void swap(int& a, int& b)
    a = b;
    b = temp;
 }
+

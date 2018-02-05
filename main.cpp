@@ -40,6 +40,7 @@ int main( int argc, char *argv[] )
 		int buffer[curr_size];
 		for (int i = 0; i < curr_size; i++) {
 			buffer[i] = i;
+			//cout << buffer[i] << endl;
 		}
 
 		// shuffle array
@@ -48,8 +49,10 @@ int main( int argc, char *argv[] )
 		// search for minmax while tracking cost
 		int min, max, cost;
 		cost = 0;
-
-		iterative_search( buffer, curr_size, min, max, cost );
+		
+		recursive_search( buffer, curr_size, min, max, cost );
+		//iterative_search( buffer, curr_size, min, max, cost );
+		//cout << min << " " << max << endl;
 		assert( min == 0 && max == curr_size - 1 );
 		outfile << curr_size << " " << cost << endl;
 	}

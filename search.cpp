@@ -11,7 +11,7 @@ void recursive_search( int array[], int size, int& min, int& max, int& cost ) {
 			max = array[0];
 		}
 	}else {
-		int size_left = size/2;
+		int size_left = size/2 - 1;
 		int size_right = size - (size/2);
 		int left_array [size_left];
 		int right_array [size_right];

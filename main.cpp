@@ -50,9 +50,9 @@ int main( int argc, char *argv[] )
 		int min, max, cost;
 		cost = 0;
 		
-		recursive_search( buffer, curr_size, min, max, cost );
-		//iterative_search( buffer, curr_size, min, max, cost );
-		//cout << min << " " << max << endl;
+		//recursive_search( buffer, curr_size, min, max, cost );
+		iterative_search( buffer, curr_size, min, max, cost );
+		//cout << curr_size << " " <<  min << " " << max << endl;
 		assert( min == 0 && max == curr_size - 1 );
 		outfile << curr_size << " " << cost << endl;
 	}

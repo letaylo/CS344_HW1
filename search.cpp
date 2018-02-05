@@ -65,7 +65,7 @@ void iterative_search(int buffer[], int size, int& min, int& max, int& cost)
   {
     start = 1;
     min = buffer[0];
-    max = buffer[1];
+    max = buffer[0];
   }
   for(int i = start; i < size; i = i + 2)
   {

@@ -1,3 +1,19 @@
+void naive_search( int array[], int size, int& min, int& max, int& cost ) {
+	min = array[0];
+	max = array[0];
+	for (int i = 1; i < size; i++) {
+		if (array[i] < min) {
+			min = array[i];
+			cost++;
+		}else if (array[i] > max) {
+			max = array[i];
+			cost += 2;
+		}else {
+			cost += 2;
+		}
+	}
+}
+
 void recursive_search( int array[], int size, int& min, int& max, int& cost ) {
 	if (size == 1) {
 		min = array[0];

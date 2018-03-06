@@ -3,14 +3,12 @@
 #include <iostream>
 #include <fstream>
 
-
 using namespace std;
 
 // prototypes
 void show( int[], int );
 void shuffle( int[], int );
 void swap( int&, int& );
-void min_search( int[], int, int&, int& );
 void naive_search( int[], int, int&, int&, int& );
 void recursive_search( int[], int, int&, int&, int& );
 void iterative_search( int[], int, int&, int&, int& );
@@ -18,48 +16,60 @@ void iterative_search( int[], int, int&, int&, int& );
 // main driver
 int main( int argc, char *argv[] )
 {
-	// check inputs
+	// check number of inputs
 	if ( argc < 3 ) {
 		cerr << "Usage: ./test_me <size> <filename>" << endl;
 		exit(1);
 	}
 
-	// read size
-	int size;
-	size = atoi( argv[1] );
-	cerr << "Size = " << size << endl;
-
-	// open outputfile
+	// read inputs: size and filename
+	int max_size;
 	ofstream outfile;
-	cerr << "Output file = " << argv[2] << endl;
+
+	max_size = atoi( argv[1] );
+	cerr << "Size = " << max_size << endl;
+	cerr << "Filename = " << argv[2] << endl;
+
+	// open output file
 	outfile.open( argv[2] );
 
-	for (int curr_size = 2; curr_size < size; curr_size++) {
-
-		// create an array of integers 
+	// run experiment on all sizes
+	for (int curr_size = 2; curr_size <= max_size; curr_size++) {
+		// create an array of integers
 		int buffer[curr_size];
 		for (int i = 0; i < curr_size; i++) {
 			buffer[i] = i;
-			//cout << buffer[i] << endl;
 		}
 
 		// shuffle array
 		shuffle( buffer, curr_size );
 
-		// search for minmax while tracking cost
-		int min, max, cost;
+		// search for minimum and maximum
+		int min, max;
+		int cost;
+
+		outfile << curr_size << " ";
+
+		// naive
 		cost = 0;
-		
-		//recursive_search( buffer, curr_size, min, max, cost );
+		naive_search( buffer, curr_size, min, max, cost );
+		assert( min == 0 && max == curr_size-1 );
+		outfile << cost << " ";
+
+		// recursive
+		cost = 0;
+		recursive_search( buffer, curr_size, min, max, cost );
+		assert( min == 0 && max == curr_size-1 );
+		outfile << cost << " ";
+
+		// iterative
+		cost = 0;
 		iterative_search( buffer, curr_size, min, max, cost );
-		//cout << curr_size << " " <<  min << " " << max << endl;
-		assert( min == 0 && max == curr_size - 1 );
-		outfile << curr_size << " " << cost << endl;
+		assert( min == 0 && max == curr_size-1 );
+		outfile << cost << endl;
 	}
 
-	// closing output file 
+	// close output file
 	outfile.close();	
-
 }
-
 
